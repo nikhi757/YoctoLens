@@ -1,0 +1,76 @@
+🚀 WEEK 1 – Final Deliverables
+
+We must finish these before moving ahead:
+
+Lock v0.1 scope
+
+Define error taxonomy (Top 10)
+
+Create CLI skeleton
+
+Create project structure
+
+Tag first version (even if minimal)
+
+
+🧱 Step 1 – Define v0.1 Scope (Strict)
+
+v0.1 will ONLY do:
+Load a build log
+Detect last failing task
+
+Extract:
+Recipe
+Task
+Error snippet
+
+Print structured output
+
+🧠 Step 2 – Define Top 10 Error Categories
+
+Start with these (based on real Yocto pain):
+
+Nothing PROVIDES
+
+file-rdeps missing
+
+do_package_qa failure
+
+Patch failure (Hunk FAILED)
+
+Fetch failure
+
+Circular dependency
+
+Taskhash mismatch
+
+Preferred version conflict
+
+Undefined reference (ABI issue)
+
+Missing runtime dependency
+
+
+🏗 Step 3 – Initial Project Structure
+
+Create this structure:
+
+YoctoLens/
+│
+├── yoctolens/
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── parser.py
+│   ├── classifier.py
+│
+├── dataset/
+│
+├── tests/
+│
+├── README.md
+├── LICENSE
+└── pyproject.toml (optional later)
+
+
+
+
