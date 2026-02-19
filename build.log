@@ -1,1 +1,4 @@
-ERROR: Nothing PROVIDES 'libxyz'
+Some random lines
+ERROR: Something earlier
+ERROR: Task (/home/user/meta/recipes-devtools/protobuf/protobuf.bb:do_package_qa) failed with exit code '1'
+ERROR: Logfile of failure stored in: /tmp/logfile

@@ -1,0 +1,30 @@
+🎯 WEEK 2 GOAL
+
+By end of this week:
+
+YoctoLens should:
+
+Detect last failing task
+
+Extract recipe name
+
+Extract task name
+
+Extract error block
+
+Print structured output
+
+Still deterministic.
+No AI yet.
+
+
+
+By end of week we improve:
+
+Clean recipe name (remove .bb)
+
+Extract error snippet
+
+Handle no-failure case cleanly
+
+Add 3 sample logs in dataset/
