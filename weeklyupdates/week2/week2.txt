@@ -28,3 +28,78 @@ Extract error snippet
 Handle no-failure case cleanly
 
 Add 3 sample logs in dataset/
+
+
+Done week 2:
+
+YoctoLens v0.5 can:
+Parse full bitbake logs
+Handle -k multi-error builds
+Normalize recipe names
+Classify common Yocto failures
+Output structured CI JSON
+
+
+Week 2 Deliverables (What You Achieved)
+
+You now have:
+
+✅ Multi-Failure Extraction
+
+Handles normal builds
+
+Handles bitbake -k
+
+No snippet overlap
+
+Proper failure isolation
+
+✅ Recipe Normalization
+
+Strips _version
+
+Strips -native
+
+Strips -cross
+
+Handles virtual/*
+
+✅ Rule-Based Classification
+
+QA Failure
+
+Fetch Failure
+
+ABI Symbol Missing
+
+Missing Provider
+
+Patch Failure
+
+Extensible design
+
+✅ Clean Architecture
+
+Parser separated from classifier
+
+CLI separated from logic
+
+Data model unified
+
+Deterministic design
+
+✅ JSON Mode with Metadata
+
+CI-friendly output
+
+Timestamp
+
+Tool version
+
+Total failures
+
+Structured failure list
+
+🏗 What Version Are We At?
+
+v0.5.0
