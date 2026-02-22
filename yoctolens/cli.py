@@ -1,6 +1,6 @@
 import sys
 from yoctolens.parser import extract_last_failure
-
+from yoctolens.classifier import classify_error
 
 def analyze(log_path):
     try:
@@ -9,12 +9,16 @@ def analyze(log_path):
 
         failure = extract_last_failure(content)
 
-        print("YoctoLens v0.2\n")
+        print("YoctoLens v0.3\n")
 
         if failure:
             print("Failure Summary:")
             print(f"  Recipe: {failure['recipe']}")
             print(f"  Task: {failure['task']}")
+
+            # NEW: classification step
+            error_type = classify_error(failure.get("error_snippet", []))
+            print(f"  Error Type: {error_type}")
 
             if failure["error_snippet"]:
                 print("\nError Snippet:")
