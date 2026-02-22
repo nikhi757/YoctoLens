@@ -1,31 +1,41 @@
 import sys
 from yoctolens.parser import extract_last_failure
 from yoctolens.classifier import classify_error
+from yoctolens.parser import extract_all_failures
+
 
 def analyze(log_path):
     try:
         with open(log_path, "r") as f:
             content = f.read()
 
-        failure = extract_last_failure(content)
+        failures = extract_all_failures(content)
 
-        print("YoctoLens v0.3\n")
+        print("YoctoLens v0.4\n")
 
-        if failure:
-            print("Failure Summary:")
+        if not failures:
+            print("No failures detected.")
+            return
+
+        print(f"Detected {len(failures)} failure(s)\n")
+
+        for idx, failure in enumerate(failures, 1):
+            error_type = classify_error(
+                failure.get("error_snippet", []),
+                task=failure.get("task")
+            )
+
+            print(f"[Failure {idx}]")
             print(f"  Recipe: {failure['recipe']}")
             print(f"  Task: {failure['task']}")
-
-            # NEW: classification step
-            error_type = classify_error(failure.get("error_snippet", []))
             print(f"  Error Type: {error_type}")
 
             if failure["error_snippet"]:
-                print("\nError Snippet:")
+                print("  Error Snippet:")
                 for line in failure["error_snippet"]:
-                    print(f"  {line}")
-        else:
-            print("No failure detected.")
+                    print(f"    {line}")
+
+            print()
 
     except Exception as e:
         print(f"Error reading log: {e}")

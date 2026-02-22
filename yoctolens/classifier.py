@@ -1,45 +1,33 @@
-def classify_error(error_snippet):
+def classify_error(error_snippet, task=None):
     """
     Classify Yocto error based on known patterns.
     """
 
-    if not error_snippet:
-        return "Unknown"
+    joined = " ".join(error_snippet).lower()
 
-    joined = " ".join(error_snippet)
+    # Pattern-based classification
+    if "nothing provides" in joined:
+        return "Missing Provider"
 
-    rules = {
-        "Missing Provider": [
-            "Nothing PROVIDES"
-        ],
-        "Runtime Dependency Missing": [
-            "requires",
-            "no providers found"
-        ],
-        "QA Failure": [
-            "QA Issue"
-        ],
-        "Patch Failure": [
-            "Hunk FAILED",
-            "patch does not apply"
-        ],
-        "Fetch Failure": [
-            "do_fetch",
-            "Fetcher failure"
-        ],
-        "Circular Dependency": [
-            "Circular dependency detected"
-        ],
-        "Taskhash Mismatch": [
-            "Taskhash mismatch"
-        ],
-        "ABI Symbol Missing": [
-            "undefined reference"
-        ],
-    }
+    if "qa issue" in joined:
+        return "QA Failure"
 
-    for category, patterns in rules.items():
-        if all(p.lower() in joined.lower() for p in patterns):
-            return category
+    if "requires" in joined and "no providers found" in joined:
+        return "Runtime Dependency Missing"
+
+    if "hunk failed" in joined or "patch does not apply" in joined:
+        return "Patch Failure"
+
+    if "fetcher failure" in joined or task == "do_fetch":
+        return "Fetch Failure"
+
+    if "circular dependency detected" in joined:
+        return "Circular Dependency"
+
+    if "taskhash mismatch" in joined:
+        return "Taskhash Mismatch"
+
+    if "undefined reference" in joined:
+        return "ABI Symbol Missing"
 
     return "Unknown"

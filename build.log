@@ -1,5 +1,15 @@
-Some random line
-ERROR: QA Issue: /usr/lib/protobuf/ptest/run-ptest requires /bin/bash, but no providers found
-WARNING: something else
-ERROR: Task (/home/user/meta/recipes-devtools/protobuf/protobuf.bb:do_package_qa) failed with exit code '1'
-ERROR: Logfile of failure stored in: /tmp/logfile
+ERROR: QA Issue: protobuf requires /bin/bash
+ERROR: Task (/path/meta/protobuf_3.20.1.bb:do_package_qa) failed with exit code '1'
+
+ERROR: Fetcher failure for zlib
+ERROR: Task (/path/meta/zlib.bb:do_fetch) failed with exit code '1'
+
+ERROR: undefined reference to symbol XYZ
+ERROR: Task (/path/meta/openssl_3.0.1.bb:do_compile) failed with exit code '1'
+
+ERROR: Nothing PROVIDES 'libxyz'
+ERROR: Task (/path/meta/custom-recipe_1.2.3.bb:do_rootfs) failed with exit code '1'
+
+ERROR: Hunk FAILED at 123.
+ERROR: patch does not apply
+ERROR: Task (/path/meta/linux-kernel.bb:do_patch) failed with exit code '1'
