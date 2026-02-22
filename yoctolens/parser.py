@@ -3,32 +3,46 @@ import re
 
 def extract_last_failure(log_content):
     """
-    Extract the last failing BitBake task from log.
-
-    Example line:
-    ERROR: Task (/path/to/recipe.bb:do_package_qa) failed with exit code '1'
+    Extract the last failing BitBake task and related error snippet.
     """
 
-    pattern = r"ERROR: Task \((.*?)\) failed"
+    lines = log_content.splitlines()
 
-    matches = re.findall(pattern, log_content)
+    failure_pattern = r"ERROR: Task \((.*?)\) failed"
 
-    if not matches:
+    failure_index = None
+    failure_match = None
+
+    for i, line in enumerate(lines):
+        match = re.search(failure_pattern, line)
+        if match:
+            failure_index = i
+            failure_match = match.group(1)
+
+    if failure_index is None:
         return None
 
-    last_match = matches[-1]
-
-    # Example:
-    # /path/to/meta/recipes-devtools/protobuf/protobuf.bb:do_package_qa
-
+    # Extract recipe and task
     try:
-        recipe_path, task = last_match.rsplit(":", 1)
+        recipe_path, task = failure_match.rsplit(":", 1)
         recipe_file = recipe_path.split("/")[-1]
         recipe_name = recipe_file.replace(".bb", "")
     except ValueError:
         return None
 
+    # Extract error snippet (look 15 lines above failure)
+    snippet_start = max(0, failure_index - 15)
+    snippet_lines = lines[snippet_start:failure_index]
+
+    # Keep only ERROR lines (excluding the final Task failure line)
+    error_lines = [
+        line for line in snippet_lines
+        if line.startswith("ERROR:")
+        and "Task (" not in line
+    ]
+
     return {
         "recipe": recipe_name,
-        "task": task
+        "task": task,
+        "error_snippet": error_lines[-5:] if error_lines else []
     }

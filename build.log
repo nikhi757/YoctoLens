@@ -1,4 +1,5 @@
-Some random lines
-ERROR: Something earlier
+Some random line
+ERROR: QA Issue: /usr/lib/protobuf/ptest/run-ptest requires /bin/bash, but no providers found
+WARNING: something else
 ERROR: Task (/home/user/meta/recipes-devtools/protobuf/protobuf.bb:do_package_qa) failed with exit code '1'
 ERROR: Logfile of failure stored in: /tmp/logfile

@@ -15,12 +15,16 @@ def analyze(log_path):
             print("Failure Summary:")
             print(f"  Recipe: {failure['recipe']}")
             print(f"  Task: {failure['task']}")
+
+            if failure["error_snippet"]:
+                print("\nError Snippet:")
+                for line in failure["error_snippet"]:
+                    print(f"  {line}")
         else:
             print("No failure detected.")
 
     except Exception as e:
         print(f"Error reading log: {e}")
-
 
 def main():
     if len(sys.argv) < 3:
