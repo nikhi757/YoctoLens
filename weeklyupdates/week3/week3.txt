@@ -1,0 +1,9 @@
+We will implement:
+
+Summary aggregation (error type counts)
+
+Integrate summary into JSON
+
+Keep CLI clean
+
+Preserve architecture separation

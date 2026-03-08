@@ -1,0 +1,32 @@
+ERROR: openssl-native-3.5.5-r0 do_patch: Applying patch 'CVE-2025-15467-01.patch' on target directory '/home/builder/bs-workspace/node0/master/qemux86-64/build/tmp/work/x86_64-linux/openssl-native/3.5.5/openssl-3.5.5'
+CmdError('quilt --quiltrc /home/builder/bs-workspace/node0/master/qemux86-64/build/tmp/work/x86_64-linux/openssl-native/3.5.5/recipe-sysroot-native/etc/quiltrc push', 0, 'stdout: Applying patch CVE-2025-15467-01.patch
+patching file crypto/evp/evp_lib.c
+Hunk #1 FAILED at 228.
+1 out of 1 hunk FAILED -- rejects in file crypto/evp/evp_lib.c
+Patch CVE-2025-15467-01.patch can be reverse-applied
+
+stderr: ')
+ERROR: Logfile of failure stored in: /home/builder/bs-workspace/node0/master/qemux86-64/build/tmp/work/x86_64-linux/openssl-native/3.5.5/temp/log.do_patch.1059
+ERROR: Task (virtual:native:/home/builder/src/base/node0/poky/meta/recipes-connectivity/openssl/openssl_3.5.5.bb:do_patch) failed with exit code '1'
+
+| checking for pkg-config... /home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/work/x86_64-linux/libmicrohttpd-native/1.0.1/recipe-sysroot-native/usr/bin/pkg-config
+| checking pkg-config is at least version 0.9.0... yes
+| checking how to find GnuTLS library... -I/home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/work/x86_64-linux/libmicrohttpd-native/1.0.1/recipe-sysroot-native/usr/lib/..//include -L/home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/work/x86_64-linux/libmicrohttpd-native/1.0.1/recipe-sysroot-native/usr/lib/..//lib -lgnutls
+| checking whether gnutls_check_version is declared... no
+| checking for function gnutls_check_version... no
+| configure: error: can't find usable libgnutls at specified prefix /home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/work/x86_64-linux/libmicrohttpd-native/1.0.1/recipe-sysroot-native/usr/lib/../
+| NOTE: The following config.log files may provide further information.
+| NOTE: /home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/work/x86_64-linux/libmicrohttpd-native/1.0.1/build/config.log
+| ERROR: configure failed
+| WARNING: exit code 1 from a shell command.
+ERROR: Task (virtual:native:/home/builder/src/base/node0/poky/meta/recipes-support/libmicrohttpd/libmicrohttpd_1.0.1.bb:do_configure) failed with exit code '1'
+NOTE: Tasks Summary: Attempted 1015 tasks of which 1012 didn't need to be rerun and 1 failed.
+NOTE: Writing buildhistory
+NOTE: Writing buildhistory took: 3 seconds
+NOTE: Build completion summary:
+NOTE:   do_populate_sysroot: 0.0% sstate reuse(0 setscene, 1 scratch)
+NOTE: The errors for this build are stored in /home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/log/error-report/error_report_20260226051336.txt
+You can send the errors to a reports server by running:
+  send-error-report /home/builder/bs-workspace/icon/master/icon-j7200/build/tmp/log/error-report/error_report_20260226051336.txt [-s server]
+NOTE: The contents of these logs will be posted in public if you use the above command with the default server. Please ensure you remove any identifying or proprietary information when prompted before sending.
+
